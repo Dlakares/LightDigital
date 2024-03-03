@@ -38,6 +38,10 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.testcontainers:junit-jupiter")
 	testImplementation("org.testcontainers:postgresql")
+
+	// Jwt
+	implementation("io.jsonwebtoken:jjwt-api:0.12.5")
+
 }
 
 dependencyManagement {
