@@ -19,7 +19,7 @@ spring:
 
   security:
     token:
-      signingKey: mySecret
+      signingKey: bd71cbe90156c76422679fab3b4ca369177e6884e963cbcb3263df3b6169bcf7
 
 server:
   port: 8080

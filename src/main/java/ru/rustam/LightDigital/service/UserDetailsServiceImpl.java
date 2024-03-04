@@ -9,9 +9,21 @@ import ru.rustam.LightDigital.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserDetailsServiceImpl {
 
     private final UserRepository repository;
+
+    public User save(User user) {
+        return repository.save(user);
+    }
+
+    public User create(User user) {
+        if(repository.findByUsername(user.getUsername()).isPresent()) {
+            throw new RuntimeException("Пользователь с таким именем уже существует");
+        }
+
+        return save(user);
+    }
 
     public User getByUsername(String username) {
         return repository.findByUsername(username)

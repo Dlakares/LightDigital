@@ -8,16 +8,31 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.rustam.LightDigital.dto.JwtAuthenticationResponse;
 import ru.rustam.LightDigital.dto.SignInRequest;
-import ru.rustam.LightDigital.service.UserService;
+import ru.rustam.LightDigital.dto.SignUpRequest;
+import ru.rustam.LightDigital.entity.User;
+import ru.rustam.LightDigital.service.UserDetailsServiceImpl;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
 
-    private final UserService userService;
+    private final UserDetailsServiceImpl userService;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+
+    public JwtAuthenticationResponse signUp(SignUpRequest request) {
+        User user = User.builder()
+                .username(request.getUsername())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .roles(request.getRoles())
+                .build();
+
+        userService.create(user);
+
+        String jwt = jwtService.generateToken(user);
+        return new JwtAuthenticationResponse(jwt);
+    }
 
     public JwtAuthenticationResponse signIn(SignInRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(

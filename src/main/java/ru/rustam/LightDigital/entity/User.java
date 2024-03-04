@@ -1,9 +1,7 @@
 package ru.rustam.LightDigital.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +13,8 @@ import java.util.Collection;
 @Builder
 @Data
 @Table(name = "users")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User extends DefaultEntity implements UserDetails {
     @Column(name = "username", unique = true, nullable = false)
     private String username;
@@ -49,21 +49,21 @@ public class User extends DefaultEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

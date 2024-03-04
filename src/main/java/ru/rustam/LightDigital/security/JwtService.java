@@ -22,7 +22,7 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    @Value("${spring.security.token.signingKey:MySecret}")
+    @Value("${spring.security.token.signingKey:bd71cbe90156c76422679fab3b4ca369177e6884e963cbcb3263df3b6169bcf7}")
     private String jwtSigningKey;
     @Value("${spring.security.token.expire.unit:MINUTES}")
     private String chronoUnit;
