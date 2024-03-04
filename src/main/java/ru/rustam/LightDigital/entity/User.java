@@ -30,6 +30,11 @@ public class User extends DefaultEntity implements UserDetails {
     )
     private Collection<Role> roles;
 
+    @OneToMany(mappedBy = "author",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Collection<Request> requests;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream()
