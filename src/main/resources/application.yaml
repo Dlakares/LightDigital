@@ -21,9 +21,24 @@ spring:
     token:
       signingKey: bd71cbe90156c76422679fab3b4ca369177e6884e963cbcb3263df3b6169bcf7
 
+  cloud:
+    openfeign:
+      client:
+        config:
+          dadataClient:
+            defaultRequestHeaders:
+              Content-Type: application/json;charset=UTF-8
+              Accept: application/json
+              Authorization: Token 04c68dc9e9571433315080dc04ed490ba713a6df
+              X-Secret: ac39dd8dcacaaa9b2801d1a48f0a24fab64420d5
+
 server:
   port: 8080
 
 logging:
   level:
     root: info
+
+application:
+  phone:
+    type: Мобильный

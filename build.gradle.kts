@@ -43,6 +43,12 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-api:0.12.5")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.5")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.5")
+
+	//Feign Client
+	implementation("io.github.openfeign:feign-okhttp:13.2.1")
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+	implementation("com.google.code.gson:gson:2.10.1")
+
 }
 
 dependencyManagement {

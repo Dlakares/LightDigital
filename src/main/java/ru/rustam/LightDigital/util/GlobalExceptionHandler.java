@@ -14,6 +14,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {IllegalArgumentException.class, IllegalStateException.class, RuntimeException.class})
     protected ResponseEntity<ExceptionResponse> handleConflict(RuntimeException ex) {
         ExceptionResponse response = new ExceptionResponse(ex.getMessage());
+        log.error(ex.toString());
         return ResponseEntity
                 .badRequest()
                 .body(response);
@@ -22,6 +23,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {Error.class, Exception.class})
     protected ResponseEntity<ExceptionResponse> handleInternalServerError(Exception ex) {
         ExceptionResponse response = new ExceptionResponse(ex.getMessage());
+        log.error(ex.toString());
         return ResponseEntity
                 .internalServerError()
                 .body(response);
