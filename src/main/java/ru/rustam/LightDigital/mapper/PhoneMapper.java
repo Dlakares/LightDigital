@@ -23,7 +23,7 @@ public class PhoneMapper {
     public Phone fromJson(String str) {
         Object[] data = mapper.readValue(str, Object[].class);
         Map<String, Object> map = (LinkedTreeMap) data[0];
-        if(!TYPE.equals(map.get("type")) || map.get("qc").equals(EMPTY_OR_TRASH) || map.get("qc").equals(HALF_OR_FULL_NOT_DETERMINE)) {
+        if(map.size() != 14 || !TYPE.equals(map.get("type")) || map.get("qc").equals(EMPTY_OR_TRASH) || map.get("qc").equals(HALF_OR_FULL_NOT_DETERMINE)) {
             throw new RuntimeException("Invalid phone number");
         }
         return Phone.builder()
