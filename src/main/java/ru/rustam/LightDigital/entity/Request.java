@@ -17,8 +17,9 @@ public class Request extends DefaultEntity{
     @Column(name = "message")
     private String message;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @OneToOne
+    @JoinColumn(name = "phone_id", nullable = false)
+    private Phone phone;
 
     @Column(name = "name")
     private String name;

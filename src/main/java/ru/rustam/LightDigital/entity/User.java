@@ -35,6 +35,11 @@ public class User extends DefaultEntity implements UserDetails {
             cascade = CascadeType.ALL)
     private Collection<Request> requests;
 
+    @OneToMany(mappedBy = "owner",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Collection<Phone> phones;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream()
