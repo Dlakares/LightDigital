@@ -49,6 +49,11 @@ dependencies {
 	// https://mvnrepository.com/artifact/com.google.code.gson/gson
 	implementation("com.google.code.gson:gson:2.10.1")
 
+	implementation ("org.mapstruct:mapstruct:1.5.5.Final")
+	annotationProcessor ("org.mapstruct:mapstruct-processor:1.5.5.Final")
+
+	// If you are using mapstruct in test code
+	testAnnotationProcessor ("org.mapstruct:mapstruct-processor:1.5.5.Final")
 }
 
 dependencyManagement {

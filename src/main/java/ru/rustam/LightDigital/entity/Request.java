@@ -22,7 +22,7 @@ public class Request extends DefaultEntity{
     private Phone phone;
 
     @Column(name = "name")
-    private String name;
+    private String senderName;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
